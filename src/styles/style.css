@@ -1,0 +1,33 @@
+/* 
+    LAYOUT
+*/
+.ant-layout-sider {
+    background-color: #fff !important;
+    padding-top: 30px;
+}
+
+.ant-layout-content {
+    padding: 30px;
+}
+
+.login-form {
+    min-height: 100vh;
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+    CAROUSEL
+*/
+.img--box, .ant-carousel {
+    max-width: 600px;
+    max-height: 337px;
+}
+
+.img--box img {
+    width: 100%;
+    height: 100%;
+}
