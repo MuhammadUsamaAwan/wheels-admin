@@ -44,6 +44,7 @@ export const createManufacturer = async(token, title, description) => {
     const body = JSON.stringify({ title, description });
     try {
       await axios.post(`${baseURL}/admin/create-manufacturer`, body, config);
+      toast.success("Make Created!")
     } catch (err) {
       toast.error(err.response.data.message);
     }
@@ -60,6 +61,7 @@ export const createManufacturerModel = async(token, title, description, manufact
     const body = JSON.stringify({ title, description, manufacturerId, startYear, endYear });
     try {
       await axios.post(`${baseURL}/admin/create-manufacturer-model`, body, config);
+      toast.success("Model Created!")
     } catch (err) {
       toast.error(err.response.data.message);
     }

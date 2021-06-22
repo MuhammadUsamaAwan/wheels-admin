@@ -7,6 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import "antd/dist/antd.css";
 import Advertisements from "../components/pages/Advertisements";
 import Advertisement from "../components/pages/Advertisement";
+import Manufacturers from "../components/pages/Manufacturers";
+import CreateMake from "../components/pages/CreateMake";
+import CreateModel from "../components/pages/CreateModel";
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -29,9 +32,9 @@ const Routes = () => {
                 <Menu.Item key="1">Dashboard</Menu.Item>
                 <Menu.Item key="3"><Link to="/advertisements">Advertisements</Link></Menu.Item>
                 <SubMenu key="sub1" title="Manufacturers">
-                  <Menu.Item key="4">All Manufacturers</Menu.Item>
-                  <Menu.Item key="5">Create New Make</Menu.Item>
-                  <Menu.Item key="6">Create New Model</Menu.Item>
+                  <Menu.Item key="4"><Link to="/manufacturers">All Manufacturers</Link></Menu.Item>
+                  <Menu.Item key="5"><Link to="/create-make">Create New Make</Link></Menu.Item>
+                  <Menu.Item key="6"><Link to="/create-model">Create New Model</Link></Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" title="Blogs">
                   <Menu.Item key="7">View Blogs</Menu.Item>
@@ -44,6 +47,9 @@ const Routes = () => {
                 <Switch>
                   <Route exact path="/advertisements" component={Advertisements} />
                   <Route exact path="/advertisements/:id" component={Advertisement} />
+                  <Route exact path="/manufacturers" component={Manufacturers} />
+                  <Route exact path="/create-make" component={CreateMake} />
+                  <Route exact path="/create-model" component={CreateModel} />
                 </Switch>
               </Content>
             </Layout>
