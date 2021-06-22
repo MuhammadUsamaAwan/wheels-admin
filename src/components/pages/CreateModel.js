@@ -1,10 +1,23 @@
-import { Form, Input, Typography, Button } from "antd"
+import { useEffect } from "react";
+import { Form, Input, Typography, Button, Select } from "antd"
 import { createManufacturerModel } from "../../services/service";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllManufacturers } from "../../redux/actions/manufacturer";
+import LoadingIcon from "../UI/LoadingIcon";
 
 const CreateModel = () => {
+    const dispatch = useDispatch()
     const token = useSelector(state => state.auth.token)
-    const createModel = (values) => console.log(values, token);
+    const manufacturers = useSelector((state) => state.manufacturers);
+    useEffect(() => {
+        dispatch(getAllManufacturers(token));
+    }, [dispatch, token])
+    if (manufacturers.isLoading)
+    return (
+        <LoadingIcon />
+    )
+    const createModel = (values) =>
+    createManufacturerModel(token, values.title, values.description, values.manufacturerId, values.startYear, values.endyear);
     return (
         <Form onFinish={createModel}>
             <Typography.Title level={3}>Create New Model</Typography.Title>
@@ -15,12 +28,16 @@ const CreateModel = () => {
                 <Input placeholder="Model's description"/>
             </Form.Item>
             <Form.Item name="manufacturerId" rules={[{ required: true, message: "Please enter Model's id!" }]}>
-                <Input placeholder="Model's id"/>
+                <Select placeholder="Select Make">
+                    {manufacturers.result.map(manufacturer => 
+                        <Select.Option value={manufacturer._id}>{manufacturer.title}</Select.Option>
+                    )}
+                </Select>
             </Form.Item>
-            <Form.Item name="startYear">
+            <Form.Item name="startYear"  rules={[{ required: true, message: "Please enter Model's start year!" }]}>
                 <Input placeholder="Model's start year" type="number" />
             </Form.Item>
-            <Form.Item name="endyear">
+            <Form.Item name="endyear"  rules={[{ required: true, message: "Please enter Model's end year!" }]}>
                 <Input placeholder="Model's end year" type="number" />
             </Form.Item>
             <Form.Item>
