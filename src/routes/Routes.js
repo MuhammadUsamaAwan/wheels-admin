@@ -10,6 +10,8 @@ import Advertisement from "../components/pages/Advertisement";
 import Manufacturers from "../components/pages/Manufacturers";
 import CreateMake from "../components/pages/CreateMake";
 import CreateModel from "../components/pages/CreateModel";
+import Blogs from "../components/pages/Blogs";
+import CreateBlog from "../components/pages/CreateBlog";
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -37,8 +39,8 @@ const Routes = () => {
                   <Menu.Item key="6"><Link to="/create-model">Create New Model</Link></Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" title="Blogs">
-                  <Menu.Item key="7">View Blogs</Menu.Item>
-                  <Menu.Item key="8">Create New Blog</Menu.Item>
+                  <Menu.Item key="7"><Link to="/blogs">View Blogs</Link></Menu.Item>
+                  <Menu.Item key="8"><Link to="/create-blog">Create New Blog</Link></Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>
@@ -50,6 +52,8 @@ const Routes = () => {
                   <Route exact path="/manufacturers" component={Manufacturers} />
                   <Route exact path="/create-make" component={CreateMake} />
                   <Route exact path="/create-model" component={CreateModel} />
+                  <Route exact path="/blogs" component={Blogs} />
+                  <Route exact path="/create-blog" component={CreateBlog} />
                 </Switch>
               </Content>
             </Layout>

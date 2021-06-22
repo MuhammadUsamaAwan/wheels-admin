@@ -6,6 +6,7 @@ import blog from './slices/blog';
 import blogs from './slices/blogs';
 import filteredAdvertisements from './slices/filteredAdvertisements';
 import manufacturers from './slices/manufacturers';
+import img from "./slices/img";
 
 export default combineReducers({
     advertisement,
@@ -15,4 +16,5 @@ export default combineReducers({
     blogs,
     filteredAdvertisements,
     manufacturers,
+    img,
 });
