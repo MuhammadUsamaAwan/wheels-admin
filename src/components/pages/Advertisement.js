@@ -17,11 +17,11 @@ const Advertisement = () => {
     if(advertisement.isLoading) return <LoadingIcon />
     const unblockAd = async() => {
         await unblockAdvertisement(token, id);
-        window.location.reload();
+        dispatch(getSingleAdvertisement(token, id));
     }
     const blockAd = async(values) => {
         await blockAdvertisement(token, id, values.reason);
-        window.location.reload();
+        dispatch(getSingleAdvertisement(token, id));
     }
     return (
         <section>

@@ -91,6 +91,7 @@ export const blockAdvertisement = async(token, advertisementId, reason) => {
       },
     };
     const body = JSON.stringify({ advertisementId, reason });
+    toast.success("Advertisement blocked successfully")
     try {
       await axios.post(`${baseURL}/admin/block-advertisement`, body, config);
     } catch (err) {
@@ -107,6 +108,7 @@ export const unblockAdvertisement = async(token, advertisementId) => {
       },
     };
     const body = JSON.stringify({ advertisementId });
+    toast.success("Advertisement unblocked successfully")
     try {
       await axios.post(`${baseURL}/admin/unblock-advertisement`, body, config);
     } catch (err) {
