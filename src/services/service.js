@@ -3,69 +3,86 @@ import { baseURL } from "../config/config";
 import { toast } from "react-toastify";
 
 // create blog
-export const createBlog = async(token, input) => {
-    const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      };
-      const body = JSON.stringify({ input });
-      try {
-        await axios.post(`${baseURL}/blog/create-blogs`, body, config);
-      } catch (err) {
-        toast.error(err.response.data.message);
-      }
-}
+export const createBlog = async (token, input) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ input });
+  try {
+    await axios.post(`${baseURL}/blog/create-blogs`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
 
 // delete blog
-export const deleteBlog = async(token, id) => {
+export const deleteBlog = async (token, id) => {
   const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    };
-    try {
-      await axios.post(`${baseURL}/admin/delete-blogs/${id}`, config);
-    } catch (err) {
-      toast.error(err.response.data.message);
-    }
-}
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  try {
+    await axios.post(`${baseURL}/admin/delete-blogs/${id}`, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
 
 // create manufacturer
-export const createManufacturer = async(token, title, description) => {
+export const createManufacturer = async (token, title, description) => {
   const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    };
-    const body = JSON.stringify({ title, description });
-    try {
-      await axios.post(`${baseURL}/admin/create-manufacturer`, body, config);
-      toast.success("Make Created!")
-    } catch (err) {
-      toast.error(err.response.data.message);
-    }
-}
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ title, description });
+  try {
+    await axios.post(`${baseURL}/admin/create-manufacturer`, body, config);
+    toast.success("Make Created!");
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
 
 // create model of manufactutrer
-export const createManufacturerModel = async(token, title, description, manufacturerId, startYear, endYear) => {
+export const createManufacturerModel = async (
+  token,
+  title,
+  description,
+  manufacturerId,
+  startYear,
+  endYear
+) => {
   const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    };
-    const body = JSON.stringify({ title, description, manufacturerId, startYear, endYear });
-    try {
-      await axios.post(`${baseURL}/admin/create-manufacturer-model`, body, config);
-      toast.success("Model Created!")
-    } catch (err) {
-      toast.error(err.response.data.message);
-    }
-}
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({
+    title,
+    description,
+    manufacturerId,
+    startYear,
+    endYear,
+  });
+  try {
+    await axios.post(
+      `${baseURL}/admin/create-manufacturer-model`,
+      body,
+      config
+    );
+    toast.success("Model Created!");
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
 
 // post image
 export const postImg = async userFile => {
@@ -83,35 +100,52 @@ export const postImg = async userFile => {
 };
 
 // block an advertisements
-export const blockAdvertisement = async(token, advertisementId, reason) => {
+export const blockAdvertisement = async (token, advertisementId, reason) => {
   const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    };
-    const body = JSON.stringify({ advertisementId, reason });
-    toast.success("Advertisement blocked successfully")
-    try {
-      await axios.post(`${baseURL}/admin/block-advertisement`, body, config);
-    } catch (err) {
-      toast.error(err.response.data.message);
-    }
-}
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ advertisementId, reason });
+  toast.success("Advertisement blocked successfully");
+  try {
+    await axios.post(`${baseURL}/admin/block-advertisement`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
 
 // unblock an advertisements
-export const unblockAdvertisement = async(token, advertisementId) => {
+export const unblockAdvertisement = async (token, advertisementId) => {
   const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    };
-    const body = JSON.stringify({ advertisementId });
-    toast.success("Advertisement unblocked successfully")
-    try {
-      await axios.post(`${baseURL}/admin/unblock-advertisement`, body, config);
-    } catch (err) {
-      toast.error(err.response.data.message);
-    }
-}
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ advertisementId });
+  toast.success("Advertisement unblocked successfully");
+  try {
+    await axios.post(`${baseURL}/admin/unblock-advertisement`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
+
+// unblock an advertisements
+export const editAdvertisement = async (token, values) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ values });
+  toast.success("Advertisement updated successfully");
+  try {
+    await axios.post(`${baseURL}/api/update-advertisment`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
