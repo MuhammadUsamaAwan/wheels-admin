@@ -149,3 +149,20 @@ export const editAdvertisement = async (token, values) => {
     toast.error(err.response.data.message);
   }
 };
+
+//edit user
+export const editUser = async (token, values) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ values });
+  toast.success("User updated successfully");
+  try {
+    await axios.post(`${baseURL}/admin/update`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};

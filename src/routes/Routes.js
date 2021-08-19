@@ -15,6 +15,7 @@ import CreateBlog from "../components/pages/CreateBlog";
 import EditAdvertisement from "../components/pages/EditAdvertisement";
 import Users from "../components/pages/Users";
 import EditManufacturer from "../components/pages/EditManufacturer";
+import EditUser from "../components/pages/EditUser";
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -95,6 +96,7 @@ const Routes = () => {
                   <Route exact path="/blogs" component={Blogs} />
                   <Route exact path="/create-blog" component={CreateBlog} />
                   <Route exact path="/users" component={Users} />
+                  <Route exact path="/edit-user/:id" component={EditUser} />
                 </Switch>
               </Content>
             </Layout>
