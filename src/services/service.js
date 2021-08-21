@@ -166,3 +166,37 @@ export const editUser = async (token, values) => {
     toast.error(err.response.data.message);
   }
 };
+
+//edit manufacturer
+export const editManufacturer = async (token, values) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ values });
+  toast.success("Manufacturer updated successfully");
+  try {
+    await axios.post(`${baseURL}/admin/update-manufacturer`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
+
+//edit model
+export const editModel = async (token, values) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ values });
+  toast.success("Model updated successfully");
+  try {
+    await axios.post(`${baseURL}/admin/update-model`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};

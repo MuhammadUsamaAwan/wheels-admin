@@ -108,7 +108,7 @@ const Manufacturers = () => {
   const dataSource = manufacturers.result.map(manufacturer => ({
     key: manufacturer._id,
     make: manufacturer.title,
-    models: manufacturer.model.map(model => model.title),
+    models: manufacturer.model.map(model => model.title).join(", "),
   }));
 
   const columns = [

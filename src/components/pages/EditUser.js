@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Typography, Form, Input, Button } from "antd";
 import { editUser } from "../../services/service";
 
 const EditUser = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const users = useSelector(state => state.users);
   const token = useSelector(state => state.auth.token);
   const user = users.result.filter(user => user._id === id)[0];
   const onFinish = values => {
-    editUser(token, values);
+    console.log(values);
+    // editUser(token, values);
   };
   return (
     <>
