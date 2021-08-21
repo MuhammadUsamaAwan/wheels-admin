@@ -16,6 +16,8 @@ import EditAdvertisement from "../components/pages/EditAdvertisement";
 import Users from "../components/pages/Users";
 import EditManufacturer from "../components/pages/EditManufacturer";
 import EditUser from "../components/pages/EditUser";
+import Packages from "../components/pages/Packages";
+import CreatePackage from "../components/pages/CreatePackage";
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -61,6 +63,14 @@ const Routes = () => {
                 <Menu.Item key="8">
                   <Link to="/users">Users</Link>
                 </Menu.Item>
+                <SubMenu key="sub3" title="Packages">
+                  <Menu.Item key="9">
+                    <Link to="/packages">View Packages</Link>
+                  </Menu.Item>
+                  <Menu.Item key="10">
+                    <Link to="/create-package">Create New Package</Link>
+                  </Menu.Item>
+                </SubMenu>
               </Menu>
             </Sider>
             <Layout>
@@ -97,6 +107,12 @@ const Routes = () => {
                   <Route exact path="/create-blog" component={CreateBlog} />
                   <Route exact path="/users" component={Users} />
                   <Route exact path="/edit-user/:id" component={EditUser} />
+                  <Route exact path="/packages" component={Packages} />
+                  <Route
+                    exact
+                    path="/create-package"
+                    component={CreatePackage}
+                  />
                 </Switch>
               </Content>
             </Layout>
