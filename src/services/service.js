@@ -200,3 +200,20 @@ export const editModel = async (token, values) => {
     toast.error(err.response.data.message);
   }
 };
+
+//create package
+export const createPackage = async (token, values) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  const body = JSON.stringify({ values });
+  toast.success("Package created successfully");
+  try {
+    await axios.post(`${baseURL}/admin/package/create`, body, config);
+  } catch (err) {
+    toast.error(err.response.data.message);
+  }
+};
